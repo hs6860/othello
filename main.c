@@ -6,26 +6,34 @@
 
 #define N 6
 
+struct boardinfo{
+	unsigned char board[36];
+	unsigned color[3];  //empty : 0 , black : 2, white : 1
+}; struct boardinfo board;
+
 int gameboard(int a[N][N])
 {
 	int i,j;
+	system("cls"); //화면을 지운 후, 게임판 출력 
 	int *ptr;
 	
 	ptr = &a[0][0];
 	printf("     0    1    2    3    4    5    \n");
+	printf("○: ●= %d : %d\n", board.color[2],board.color[1]);	
 	for(i=0;i<6;i++)
 	{
 		printf("   +----+----+----+----+----+----+\n");
 		printf(" %c |", i+'a'); //보드의 세로줄 번호  
 		
+		
 		for(j=0;j<6;j++)
 		{
-		
-			if(ptr==1)
-				printf("  1 |"); 
-			else if(ptr==2)
+			char k = board.board[i*6+j];
+			if(k == 1)
+				printf("  ●|"); 
+			else if(k == 2)
 				printf("  ○|");
-			else if(ptr==0)				// empty : 0 , black : 1, white : 2
+			else if(k == 0)				// bound : 0 , black : 2, white : 1, empty : blank
 				printf("  X |"); 
 			else
 				printf("    |");
@@ -54,7 +62,11 @@ void main(int argc, char *argv[]) {
 	};
 	
 	gameboard(initboard);
+
+	
+	
+	
 	
 
-	return 0;
+
 }
