@@ -14,7 +14,6 @@ struct boardinfo{
 int gameboard(int a[N][N])
 {
 	int i,j;
-	system("cls"); //화면을 지운 후, 게임판 출력 
 	int *ptr;
 	
 	ptr = &a[0][0];
@@ -28,12 +27,12 @@ int gameboard(int a[N][N])
 		
 		for(j=0;j<6;j++)
 		{
-			char k = board.board[i*6+j];
-			if(k == 1)
+
+			if(ptr == 1)
 				printf("  ●|"); 
-			else if(k == 2)
+			else if(ptr == 2)
 				printf("  ○|");
-			else if(k == 0)				// bound : 0 , black : 2, white : 1, empty : blank
+			else if(ptr == 0)				// bound : 0 , black : 2, white : 1, empty : blank
 				printf("  X |"); 
 			else
 				printf("    |");
@@ -63,10 +62,13 @@ void main(int argc, char *argv[]) {
 	
 	gameboard(initboard);
 
-	
-	
-	
-	
+	void putboard(int put,int turn)
+{
+	int i,j;
+	int anti = (turn^ 0*3);
+	static int directions[8] = {1,-1,6,-6,-5,-7,5,7};//게임에 사용되는 8개의 방향
+
+}
 
 
 }
